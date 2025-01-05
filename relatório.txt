@@ -1,0 +1,29 @@
+
+Funcionamento:
+
+	Dois valores são lidos na interface gráfica, um é o andar que a pessoa está e o outro é o andar que a pessoa quer ir.
+	Esses dois valores são armazenados em forma de tuplua e adicionado em uma fila geral.
+	Uma função principal verifica constantemente a fila geral, e sempre que tem algo na fila cria uma thread para distribuir as requisições para as filas dos respectivos elevadores.
+	A função de distribuir requisições considera o menor tempo gasto para o elevador terminar oque está fazendo e ir atender a requisição, considerando o seguinte:
+
+		1 - Tem mais requisições na fila do elevador
+		2 - O elevador está parado e não tem requisições na fila
+		3 - O elevador está em movimento e não tem requisições na fila
+
+	A função calcula o tempo gasto para cada elevador atender a requisição (criei uma variável que guarda o tempo total de execução do elevador) e envia a requisição para o tempo que for menor.
+
+	A Fila dos elevadores também são constantemente verificadas, se tem algo na fila é criado uma thread (uma para cada elevador, para o funcionamento de um não travar o funcionamento de outro) chamando a função 'movimenta()'
+	A função movimenta altera o status do elevador para 'em movimento', tira a requisição da fila do elevador e coloca em uma variável, depois chama a função 'operacao()'para realmente fazer o movimento do elevador
+	A função operação movimenta o elevador do andar que ele estava até o andar que o cliente solicitou o elevador até o andar que o cliente quer ir, a cada movimentação do elevador é simulado o tempo de 2 segundos para passar de
+um andar para o outro e 5 segundos para o embarque e desembarque, também é atualizado todas as variáveis como andar atual, status do elevador (o que é exibido na interface gráfica) e movimento.
+	Depois que a funcao 'operacao()' acaba, volta novamente para a função 'movimenta()' que seta novamente as variáveis do estado final daquela requisição a thread do elevador finaliza, e caso tenha mais requisições é criada outra 
+do mesmo tipo.
+	OBS: para das threads criadas, exite uma condição de que só pode inicar outra se a anterior do mesmo tipo tiver finalizada.
+
+	Para a atualização da interface gráfica tive que usar variáveis globais, pois o tkinter não suporta atualizar a interface em outra thread que não seja a principal, então dentro das funções são setados todas as informações
+ em variáveis globais, para dentro da thread da interface criar uma função que faz a atualização da interface a cada 1 segundo, baseada nos valores das variáveis globais.
+
+Pontos difíceis:
+	Entender como fazer as threads se comunicarem e atualizar a interface gráfica.
+	Poderia ter utilizado classes para deixar o código com uma reúsabilidade maior, porém como não tinha domínio sobre elas fiquei com medo de perder muito tempo aprendendo, pois demorei muito para entender como elas iam se comunicar
+e só tinha uma semana para fazer o projeto, por isso decidi usar variáveis globais e dicionários.
