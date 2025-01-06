@@ -43,7 +43,8 @@ def Distribui_Requisicoes(): #Distribui as requisições da fila geral
         
     tempo_A = abs(ultima_req_A[1] - andar_saida) * 2 + tempo_de_espera['A'] #calcula o tempo de cada elevador 
     tempo_B = abs(ultima_req_B[1] - andar_saida) * 2 + tempo_de_espera['B'] 
-    
+    print("tempo de espera de A:", tempo_de_espera['A'])
+    print("tempo de espera de B:", tempo_de_espera['B'])
     #faz uma verificacao para saber qual elevador está mais perto, o abs retorna o valor absoluto da diferença entre os andares atuais dos elevadores e o de chamada
     if(tempo_A <= tempo_B): #se o elevador A estiver mais perto ou a diferença entre A e B for a mesma, coloca a requisição na fila do A
         with lock:
@@ -76,7 +77,7 @@ def movimenta(elevador):
                 status_do_elevador['A'] = 0 #elevador aguardando nova requisição
                 andar_atual['A'] = andar
                 atualiza_int['andar_A'] = andar
-                atualiza_int['at_A'] = "Aguardando"
+                atualiza_int['at_A'] = "Parado"
             
         elif(elevador == 'B'):
             with lock:
@@ -127,7 +128,8 @@ def simula_tempo(tempo, elevador): #simula o passar o tempo e decrementa da vari
     
     for _ in range (tempo):
         time.sleep(1)
-        tempo_de_espera[elevador] -= tempo  
+        with lock:
+            tempo_de_espera[elevador] -= 1 
     
 
 def att_var(elevador, status, movimento, andar): #atualiza o valor das variáveis globais que são exibidas na interface
