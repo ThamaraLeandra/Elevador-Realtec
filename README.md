@@ -43,41 +43,41 @@ Existe uma restrição para criação de threads: uma nova thread do mesmo tipo 
 
 * A thread do elevador chama a função movimenta():
 
-** Define o status do elevador como "em movimento"
+  * Define o status do elevador como "em movimento"
 
-** Remove a requisição da fila do elevador
+  * Remove a requisição da fila do elevador
 
-** Armazena a requisição em uma variável de controle
+  * Armazena a requisição em uma variável de controle
 
 * Em seguida, a função operacao() é executada:
 
-** Move o elevador do andar atual até o andar solicitado pelo usuário
+  * Move o elevador do andar atual até o andar solicitado pelo usuário
 
-** Realiza o deslocamento até o andar de destino
+  * Realiza o deslocamento até o andar de destino
 
 * Simula o tempo de execução com:
 
-** 2 segundos por andar percorrido
+  * 2 segundos por andar percorrido
 
-** 5 segundos para embarque e desembarque
+  * 5 segundos para embarque e desembarque
 
 *Durante a execução, são atualizadas variáveis como:
 
-** Andar atual
+  * Andar atual
 
-** Status do elevador
+  * Status do elevador
 
-** Estado de movimento
+  * Estado de movimento
 
 * Ao final da operação:
 
-** O controle retorna à função movimenta()
+  * O controle retorna à função movimenta()
 
-** O estado final do elevador é ajustado
+  * O estado final do elevador é ajustado
 
-** A thread é encerrada
+  * A thread é encerrada
 
-** Caso existam novas requisições, uma nova thread é criada
+  *Caso existam novas requisições, uma nova thread é criada
 
 ## Interface Gráfica
 
@@ -87,13 +87,13 @@ Uma função executada na thread principal realiza a atualização da interface 
 
 ## Desafios Encontrados
 
-** Comunicação entre threads concorrentes
+* Comunicação entre threads concorrentes
 
-** Sincronização do estado dos elevadores
+* Sincronização do estado dos elevadores
 
-** Atualização segura da interface gráfica
+* Atualização segura da interface gráfica
 
-** Controle do ciclo de vida das threads
+* Controle do ciclo de vida das threads
 
 ## Decisões de Projeto
 
