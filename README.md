@@ -11,7 +11,7 @@ Dois valores são informados na interface gráfica:
 
 * Andar de destino
 
-Esses valores são armazenados em forma de tupla e adicionados a uma fila geral de requisições.
+Esses valores são armazenados e adicionados a uma fila geral de requisições.
 
 Uma função principal monitora constantemente a fila geral. Sempre que uma nova requisição é identificada, uma thread é criada para realizar a distribuição dessa requisição entre os elevadores disponíveis.
 
