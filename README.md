@@ -61,7 +61,7 @@ Existe uma restrição para criação de threads: uma nova thread do mesmo tipo 
 
   * 5 segundos para embarque e desembarque
 
-*Durante a execução, são atualizadas variáveis como:
+* Durante a execução, são atualizadas variáveis como:
 
   * Andar atual
 
