@@ -77,7 +77,7 @@ Existe uma restrição para criação de threads: uma nova thread do mesmo tipo 
 
   * A thread é encerrada
 
-  *Caso existam novas requisições, uma nova thread é criada
+  * Caso existam novas requisições, uma nova thread é criada
 
 ## Interface Gráfica
 
